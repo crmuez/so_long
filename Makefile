@@ -4,7 +4,7 @@ MLX_DIR	= ./MLX42
 MLX	:= $(MLX_DIR)/libmlx42.a
 HEADERS	:= -I$(MLX)
 MLX_FLAGS	:= -ldl -pthread -lm
-SRCS	:= so_long.c get_next_line.c get_next_line_utils.c read_map.c check_map.c floodfill.c print_cosas.c
+SRCS	:= so_long.c get_next_line.c get_next_line_utils.c read_map.c check_map.c floodfill.c print_images.c
 OBJS	:= ${SRCS:.c=.o}
 all: $(NAME)
 libmlx:
