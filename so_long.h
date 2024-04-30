@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:04:50 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/04/25 16:57:43 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/04/30 20:00:49 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@
 # include <string.h>
 # include "./MLX42/include/MLX42/MLX42.h"
 
+typedef struct s_images
+{
+	mlx_texture_t	*floor;
+	mlx_texture_t	*wall;
+	mlx_texture_t	*player;
+	mlx_texture_t	*door;
+	mlx_texture_t	*coins;
+}					t_images;
+
 typedef struct s_map
 {
 	char		**map;
@@ -38,6 +47,7 @@ typedef struct s_map
 	int			exit_column;
 	int			movs;
 	mlx_t		*mlx;
+	t_images	images;
 }			t_map;
 
 int		main(int argc, char **argv);
@@ -54,7 +64,7 @@ int		count_lines(char *argv);
 int		count_chars(t_map *game);
 void	read_map(char *argv, t_map *game);
 int		check_rect(t_map *game);
-int		check_walls(char *argv, t_map *game);
+int		check_walls(t_map *game);
 int		check_ep(t_map *game);
 int		check_collect(t_map *game);
 int		check_letters(t_map *game);
@@ -62,7 +72,7 @@ int		floodfill(char	*argv, t_map *game);
 void	pos_player(t_map *game);
 void	pos_exit(t_map *game);
 void	shit(void);
-void	open_images(t_map *game);
-void	print_images(t_map	*game);
+void	load_images(t_map	*game);
+void	print_map(t_map	*game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:47:54 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/04/25 16:57:24 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:50:24 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	read_map(char *argv, t_map *game)
 		exit(1);
 	game->rows = count_lines(argv);
 	game->map = (char **)malloc(sizeof(char *) * (game->rows + 1));
+	if (!game->map)
+		free(game->map);
 	i = 0;
 	while (game->rows > i)
 	{

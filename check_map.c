@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:21:11 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/04/25 16:58:56 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:41:22 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_rect(t_map *game)
 	return (1);
 }
 
-int	check_walls(char *argv, t_map *game)
+int	check_walls(t_map *game)
 {
 	int		i;
 
