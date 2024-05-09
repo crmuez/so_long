@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:11:17 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/04/30 20:08:41 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/09 20:17:37 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	pos_player(t_map *game)
 			break;
 		j++;
 	}
-	game->player_row = j;
-	game->player_column = i;
+	game->player_y = j;
+	game->player_x = i;
 }
 
 void	pos_exit(t_map *game)
@@ -75,10 +75,12 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		shit();
 	read_map(argv[1], game);
-	if (check_rect(game) && check_walls(game) && check_ep(game)
-		&& check_collect(game) && check_letters(game))
+	if (check_rect(game) && check_walls(game) && check_collect(game)
+		&& check_ep(game) && check_letters(game) && floodfill(argv[1], game))
 	{
 		pos_player(game);
+		printf("1 Pos player x: %d\n", game->player_x);
+		printf("1 Pos player y: %d\n", game->player_y);
 		pos_exit(game);
 		game->mlx = malloc(sizeof(mlx_t));
 		if (!game->mlx)
@@ -86,18 +88,12 @@ int	main(int argc, char **argv)
 			puts(mlx_strerror(mlx_errno));
 			return (EXIT_FAILURE);
 		}
-		game->mlx = mlx_init(71 * (game->columns -1), 71 * (game->rows),
-				"puto juego the 42balls", true);
-		load_images(game);
+		game->mlx = mlx_init(PIXELS * (game->columns -1), PIXELS * (game->rows),
+				"So Long", true);
+		game->images = malloc(sizeof(t_images));
 		print_map(game);
+		mlx_key_hook(game->mlx, &my_keyhook, game);
 		mlx_loop(game->mlx);
 	}
 	return (0);
 }
-
-	/*int i = 0;
-	while (map[i])
-	{
-		printf("%s", map[i]);
-		i++;
-	}*/

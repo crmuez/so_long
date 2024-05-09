@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:04:50 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/04/30 20:00:49 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:28:13 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # endif
 
+# define PIXELS 71
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -28,11 +30,11 @@
 
 typedef struct s_images
 {
-	mlx_texture_t	*floor;
-	mlx_texture_t	*wall;
-	mlx_texture_t	*player;
-	mlx_texture_t	*door;
-	mlx_texture_t	*coins;
+	mlx_image_t	*floor;
+	mlx_image_t	*wall;
+	mlx_image_t	*player;
+	mlx_image_t	*door;
+	mlx_image_t	*coins;
 }					t_images;
 
 typedef struct s_map
@@ -41,13 +43,13 @@ typedef struct s_map
 	int			columns;
 	int			rows;
 	int			collects;
-	int			player_row;
-	int			player_column;
+	int			player_y;
+	int			player_x;
 	int			exit_row;
 	int			exit_column;
 	int			movs;
 	mlx_t		*mlx;
-	t_images	images;
+	t_images	*images;
 }			t_map;
 
 int		main(int argc, char **argv);
@@ -72,7 +74,12 @@ int		floodfill(char	*argv, t_map *game);
 void	pos_player(t_map *game);
 void	pos_exit(t_map *game);
 void	shit(void);
-void	load_images(t_map	*game);
+void	load_wall(t_map	*game, int i, int j);
+void	load_floor(t_map	*game, int i, int j);
+void	load_door(t_map	*game, int i, int j);
+void	load_player(t_map	*game, int i, int j);
+void	load_coin(t_map	*game, int i, int j);
 void	print_map(t_map	*game);
+void	my_keyhook(mlx_key_data_t keydata, void *param);
 
 #endif
