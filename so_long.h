@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:04:50 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/06 20:28:13 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/10 21:33:02 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 
 # endif
 
-# define PIXELS 71
+# define PIX 71
 
 # include <stdlib.h>
+# include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -34,13 +35,14 @@ typedef struct s_images
 	mlx_image_t	*wall;
 	mlx_image_t	*player;
 	mlx_image_t	*door;
+	mlx_image_t	*open_door;
 	mlx_image_t	*coins;
 }					t_images;
 
 typedef struct s_map
 {
 	char		**map;
-	int			columns;
+	int			col;
 	int			rows;
 	int			collects;
 	int			player_y;
@@ -54,6 +56,8 @@ typedef struct s_map
 
 int		main(int argc, char **argv);
 char	*get_next_line(int fd);
+int		ft_printf(char const *s, ...);
+int		ft_conversion(char s, va_list args);
 char	*manage_storage(int fd, int bytesread, char **text);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *s);
@@ -74,6 +78,7 @@ int		floodfill(char	*argv, t_map *game);
 void	pos_player(t_map *game);
 void	pos_exit(t_map *game);
 void	shit(void);
+int		check_errors(t_map *game, char *argv);
 void	load_wall(t_map	*game, int i, int j);
 void	load_floor(t_map	*game, int i, int j);
 void	load_door(t_map	*game, int i, int j);

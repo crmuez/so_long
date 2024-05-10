@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:47:57 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/06 20:25:53 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:59:17 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	load_wall(t_map	*game, int i, int j)
 	game->images->wall = mlx_texture_to_image(game->mlx, wall);
 	if (!game->images->wall)
 		shit();
-	mlx_image_to_window(game->mlx, game->images->wall, i * PIXELS, j * PIXELS);
+	mlx_image_to_window(game->mlx, game->images->wall, i * PIX, j * PIX);
 	if (mlx_image_to_window(game->mlx, \
-		game->images->wall, i * PIXELS, j * PIXELS) < 0)
+		game->images->wall, i * PIX, j * PIX) < 0)
 		shit();
 }
 
@@ -38,9 +38,9 @@ void	load_floor(t_map	*game, int i, int j)
 	game->images->floor = mlx_texture_to_image(game->mlx, floor);
 	if (!game->images->floor)
 		shit();
-	mlx_image_to_window(game->mlx, game->images->floor, i * PIXELS, j * PIXELS);
+	mlx_image_to_window(game->mlx, game->images->floor, i * PIX, j * PIX);
 	if (mlx_image_to_window(game->mlx, \
-		game->images->floor, i * PIXELS, j * PIXELS) < 0)
+		game->images->floor, i * PIX, j * PIX) < 0)
 		shit();
 }
 
@@ -54,9 +54,9 @@ void	load_door(t_map	*game, int i, int j)
 	game->images->door = mlx_texture_to_image(game->mlx, door);
 	if (!game->images->door)
 		shit();
-	mlx_image_to_window(game->mlx, game->images->door, i * PIXELS, j * PIXELS);
+	mlx_image_to_window(game->mlx, game->images->door, i * PIX, j * PIX);
 	if (mlx_image_to_window(game->mlx, \
-		game->images->door, i * PIXELS, j * PIXELS) < 0)
+		game->images->door, i * PIX, j * PIX) < 0)
 		shit();
 }
 
@@ -71,7 +71,7 @@ void	load_player(t_map	*game, int i, int j)
 	if (!game->images->player)
 		shit();
 	mlx_image_to_window(game->mlx, \
-		game->images->player, i * PIXELS, j * PIXELS);
+		game->images->player, i * PIX, j * PIX);
 }
 
 void	load_coin(t_map	*game, int i, int j)
@@ -84,8 +84,8 @@ void	load_coin(t_map	*game, int i, int j)
 	game->images->coins = mlx_texture_to_image(game->mlx, coin);
 	if (!game->images->coins)
 		shit();
-	mlx_image_to_window(game->mlx, game->images->coins, i * PIXELS, j * PIXELS);
+	mlx_image_to_window(game->mlx, game->images->coins, i * PIX, j * PIX);
 	if (mlx_image_to_window(game->mlx, \
-		game->images->coins, i * PIXELS, j * PIXELS) < 0)
+		game->images->coins, i * PIX, j * PIX) < 0)
 		shit();
 }

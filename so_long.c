@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:11:17 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/09 20:17:37 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/10 20:02:10 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,13 @@ int	main(int argc, char **argv)
 	t_map	*game;
 
 	game = malloc(sizeof(t_map));
-	if (!game)
-		free(game);
 	if (argc != 2)
 		shit();
+	game->movs = 0;
 	read_map(argv[1], game);
-	if (check_rect(game) && check_walls(game) && check_collect(game)
-		&& check_ep(game) && check_letters(game) && floodfill(argv[1], game))
+	if (check_errors(game, argv[1]) == 1)
 	{
 		pos_player(game);
-		printf("1 Pos player x: %d\n", game->player_x);
-		printf("1 Pos player y: %d\n", game->player_y);
 		pos_exit(game);
 		game->mlx = malloc(sizeof(mlx_t));
 		if (!game->mlx)
@@ -88,7 +84,7 @@ int	main(int argc, char **argv)
 			puts(mlx_strerror(mlx_errno));
 			return (EXIT_FAILURE);
 		}
-		game->mlx = mlx_init(PIXELS * (game->columns -1), PIXELS * (game->rows),
+		game->mlx = mlx_init(PIX * (game->col -1), PIX * (game->rows),
 				"So Long", true);
 		game->images = malloc(sizeof(t_images));
 		print_map(game);

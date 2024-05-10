@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:21:11 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/04/29 18:41:22 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:34:40 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	check_rect(t_map *game)
 	{
 		if ((game->rows - 1) == i)
 		{
-			if (ft_strlen(game->map[i]) != (game->columns - 1))
+			if (ft_strlen(game->map[i]) != (game->col - 1))
 				shit();
 		}
 		else
 		{
-			if (ft_strlen(game->map[i]) != game->columns)
+			if (ft_strlen(game->map[i]) != game->col)
 				shit();
 		}
 		i++;
@@ -48,7 +48,7 @@ int	check_walls(t_map *game)
 	i = 0;
 	while (game->rows > (i + 1))
 	{
-		if (game->map[i][0] != '1' || game->map[i][game->columns - 2] != '1')
+		if (game->map[i][0] != '1' || game->map[i][game->col - 2] != '1')
 			shit();
 		i++;
 	}

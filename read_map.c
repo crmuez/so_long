@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:47:54 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/04/29 18:50:24 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/10 21:55:19 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	shit(void)
 {
-	write(2, "Error\n", 6);
+	write(2, "Error 💩\n", 11);
 	exit(1);
 }
 
@@ -68,5 +68,5 @@ void	read_map(char *argv, t_map *game)
 	}
 	close(fd);
 	game->map[i] = NULL;
-	game->columns = count_chars(game);
+	game->col = count_chars(game);
 }
