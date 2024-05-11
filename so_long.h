@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:04:50 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/10 21:33:02 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/11 13:02:42 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ void	load_floor(t_map	*game, int i, int j);
 void	load_door(t_map	*game, int i, int j);
 void	load_player(t_map	*game, int i, int j);
 void	load_coin(t_map	*game, int i, int j);
+void	load_open_door(t_map	*game, int i, int j);
 void	print_map(t_map	*game);
 void	my_keyhook(mlx_key_data_t keydata, void *param);
+void	collec_coins(t_map *game);
+int		check_exit(t_map *game);
 
 #endif

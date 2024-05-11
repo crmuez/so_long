@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 18:02:08 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/10 21:54:19 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/11 13:02:27 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	check_ber(char *argv)
 
 int	check_errors(t_map *game, char *argv)
 {
+	game->collects = check_collect(game);
 	if (check_rect(game) && check_walls(game) && check_collect(game)
 		&& check_ep(game) && check_letters(game) && floodfill(&argv[1], game)
 		&& check_ber(argv))
@@ -49,18 +50,21 @@ int	check_errors(t_map *game, char *argv)
 	return (0);
 }
 
-int	check_exit(t_map *game, char let)
+int	check_exit(t_map *game)
 {
-	if (let == 'E' && game->collects == 0)
+	if (game->collects == 0)
 	{
 		write(1, "¡Enhorabuena! 🎮🏆\n", 23);
 		exit(1);
 	}
-	if (let == 'E' && game->collects != 0)
+	if (game->collects != 0)
 	{
 		write(1, "Necesitas recoger todos los consumibles!\n", 41);
 		return (1);
 	}
 	else
+	{
 		shit ();
+		return (0);
+	}
 }

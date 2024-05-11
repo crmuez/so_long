@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:27:56 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/10 21:55:30 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/11 12:41:01 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 		key_d(game, keydata);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		exit(1);
+	collec_coins(game);
 }
