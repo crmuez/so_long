@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:47:54 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/10 21:55:19 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:32:36 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	count_lines(char *argv)
 		i++;
 	}
 	close(fd);
+	free(map);
 	return (i);
 }
 

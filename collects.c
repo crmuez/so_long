@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 21:35:03 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/11 13:34:51 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:23:52 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,16 @@
 void	delete_coins(t_map *game)
 {
 	int	i;
-	int	count;
 
 	i = 0;
-	count = game->collects;
-	while (count > 0)
+	if (game->map[game->player_y][game->player_x] == 'C')
 	{
-		if (((game->images->coins->instances[i].y
-					== game->images->player->instances->y)
-				&& (game->images->coins->instances[i].x
-					== game->images->player->instances->x))
-			&& game->images->coins->instances[i].enabled == true)
-		{
-			game->images->coins->instances[i].enabled = false;
-			game->map[game->player_y][game->player_x] = '0';
-			print_map(game);
-			count--;
-			return ;
-		}
-		i++;
+		game->map[game->player_y][game->player_x] = '0';
+		load_floor(game, game->player_x, game->player_y);
+		load_player(game, game->player_x, game->player_y);
+		//print_map(game);
+		game->collects--;
+		return ;
 	}
 }
 
@@ -45,7 +36,6 @@ void	collec_coins(t_map *game)
 		delete_coins(game);
 		game->map[game->images->player->instances->y / PIX]
 		[game->images->player->instances->x / PIX] = '0';
-		game->collects--;
 		if (game->collects == 0)
 		{
 			game->images->door->instances->enabled = false;
