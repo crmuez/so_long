@@ -6,15 +6,17 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:47:54 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/13 17:32:36 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:19:40 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	shit(void)
+void	shit(t_map	*game)
 {
 	write(2, "Error 💩\n", 11);
+	if (game)
+		free_map(game->map);
 	exit(1);
 }
 
@@ -26,7 +28,7 @@ int	count_lines(char *argv)
 
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		shit();
+		return (0);
 	map = get_next_line(fd);
 	i = 0;
 	while (map)

@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 21:35:03 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/13 17:23:52 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:14:07 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	delete_coins(t_map *game)
 		game->map[game->player_y][game->player_x] = '0';
 		load_floor(game, game->player_x, game->player_y);
 		load_player(game, game->player_x, game->player_y);
-		//print_map(game);
 		game->collects--;
-		return ;
 	}
 }
 

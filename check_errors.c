@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 18:02:08 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/11 13:02:27 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:12:14 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	check_ber(char *argv)
 	ber = ".ber";
 	i = ft_strlen(argv) - 4;
 	if (i < 4)
-		shit();
+		return (0);
 	if (ft_strcmp(&argv[i], ber) == 0)
 		return (1);
 	else
-		shit();
+		shit(NULL);
 	return (0);
 }
 
@@ -64,7 +64,23 @@ int	check_exit(t_map *game)
 	}
 	else
 	{
-		shit ();
+		shit (game);
 		return (0);
+	}
+}
+
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	if (map)
+	{
+		while (map[i] != NULL)
+		{
+			free (map[i]);
+			i++;
+		}
+		free (map);
 	}
 }

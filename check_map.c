@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:21:11 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/10 19:34:40 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:13:46 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	check_rect(t_map *game)
 		if ((game->rows - 1) == i)
 		{
 			if (ft_strlen(game->map[i]) != (game->col - 1))
-				shit();
+				shit(game);
 		}
 		else
 		{
 			if (ft_strlen(game->map[i]) != game->col)
-				shit();
+				shit(game);
 		}
 		i++;
 	}
@@ -42,14 +42,14 @@ int	check_walls(t_map *game)
 	while (game->map[0][i] != '\n' && game->map[0][i] != '\0')
 	{
 		if (game->map[0][i] != '1' || game->map[game->rows -1][i] != '1')
-			shit();
+			shit(game);
 		i++;
 	}
 	i = 0;
 	while (game->rows > (i + 1))
 	{
 		if (game->map[i][0] != '1' || game->map[i][game->col - 2] != '1')
-			shit();
+			shit(game);
 		i++;
 	}
 	return (1);
@@ -105,7 +105,7 @@ int	check_collect(t_map *game)
 		j++;
 	}
 	if (c < 1)
-		shit();
+		shit(game);
 	return (c);
 }
 
@@ -124,7 +124,7 @@ int	check_letters(t_map *game)
 			if (game->map[j][i] != '1' && game->map[j][i] != '0'
 				&& game->map[j][i] != 'C' && game->map[j][i] != 'P'
 				&& game->map[j][i] != 'E')
-				shit();
+				shit(game);
 			i++;
 		}
 		j++;

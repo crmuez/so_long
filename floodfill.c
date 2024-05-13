@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:23:23 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/10 18:02:23 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:15:51 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ int	floodfill(char	*argv, t_map *game)
 
 	i = 0;
 	pos_player(game);
-	copymap = malloc(sizeof(char *) * game->rows);
+	copymap = malloc(sizeof(char *) * game->rows + 1);
 	while (i < game->rows)
 	{
 		copymap[i] = ft_strdup(game->map[i]);
 		i++;
 	}
+	copymap[i] = NULL;
 	fill(copymap, game->player_y, game->player_x);
 	rows = 0;
 	columns = 0;
@@ -50,11 +51,14 @@ int	floodfill(char	*argv, t_map *game)
 		while (copymap[columns][rows] != '\n')
 		{
 			if (copymap[columns][rows] == 'C' || copymap[columns][rows] == 'E')
-				shit();
+			{
+				free_map(copymap);	
+				shit(game);
+			}
 			rows++;
 		}
 		columns++;
 	}
-	free (copymap);
+	free_map(copymap);
 	return (1);
 }

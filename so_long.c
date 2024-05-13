@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:11:17 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/10 20:02:10 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:18:17 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	pos_player(t_map *game)
 		while (game->map[j][i] != '\n')
 		{
 			if (game->map[j][i] == 'P')
-				break;
+				break ;
 			else
 				i++;
 		}
 		if (game->map[j][i] == 'P')
-			break;
+			break ;
 		j++;
 	}
 	game->player_y = j;
@@ -53,12 +53,12 @@ void	pos_exit(t_map *game)
 		while (game->map[j][i] != '\n')
 		{
 			if (game->map[j][i] == 'E')
-				break;
+				break ;
 			else
 				i++;
 		}
 		if (game->map[j][i] == 'E')
-			break;
+			break ;
 		j++;
 	}
 	game->exit_row = j;
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 
 	game = malloc(sizeof(t_map));
 	if (argc != 2)
-		shit();
+		shit(NULL);
 	game->movs = 0;
 	read_map(argv[1], game);
 	if (check_errors(game, argv[1]) == 1)
