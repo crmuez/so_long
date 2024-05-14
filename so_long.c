@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:11:17 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/13 21:18:17 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:06:57 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,19 @@ void	pos_exit(t_map *game)
 	game->exit_column = i;
 }
 
+void	makenull(t_map (*game))
+{
+	game->mlx = NULL;
+	game->map = NULL;
+	game->images = NULL;
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	*game;
 
 	game = malloc(sizeof(t_map));
+	makenull(game);
 	if (argc != 2)
 		shit(NULL);
 	game->movs = 0;
@@ -79,11 +87,6 @@ int	main(int argc, char **argv)
 		pos_player(game);
 		pos_exit(game);
 		game->mlx = malloc(sizeof(mlx_t));
-		if (!game->mlx)
-		{
-			puts(mlx_strerror(mlx_errno));
-			return (EXIT_FAILURE);
-		}
 		game->mlx = mlx_init(PIX * (game->col -1), PIX * (game->rows),
 				"So Long", true);
 		game->images = malloc(sizeof(t_images));
@@ -91,5 +94,9 @@ int	main(int argc, char **argv)
 		mlx_key_hook(game->mlx, &my_keyhook, game);
 		mlx_loop(game->mlx);
 	}
+	free_map(game->map);
+	free(game->mlx);
+	free(game->images);
+	free(game);
 	return (0);
 }

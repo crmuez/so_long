@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:04:50 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/13 21:18:30 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/14 18:14:41 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_images
 	mlx_image_t	*door;
 	mlx_image_t	*open_door;
 	mlx_image_t	*coins;
+	mlx_image_t	*tig;
 }					t_images;
 
 typedef struct s_map
@@ -90,5 +91,6 @@ void	my_keyhook(mlx_key_data_t keydata, void *param);
 void	collec_coins(t_map *game);
 int		check_exit(t_map *game);
 void	free_map(char **map);
+void	load_tig(t_map	*game, int i, int j);
 
 #endif

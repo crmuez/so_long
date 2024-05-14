@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:47:54 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/13 21:19:40 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:07:55 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@ void	shit(t_map	*game)
 {
 	write(2, "Error 💩\n", 11);
 	if (game)
+	{
 		free_map(game->map);
+		if (game->mlx)
+			free(game->mlx);
+		if (game->images)
+			free(game->images);
+		free(game);
+	}
 	exit(1);
 }
 
@@ -30,14 +37,15 @@ int	count_lines(char *argv)
 	if (fd < 0)
 		return (0);
 	map = get_next_line(fd);
+	free(map);
 	i = 0;
 	while (map)
 	{
 		map = get_next_line(fd);
+		free(map);
 		i++;
 	}
 	close(fd);
-	free(map);
 	return (i);
 }
 

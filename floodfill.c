@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 20:23:23 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/13 21:15:51 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:25:30 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	floodfill(char	*argv, t_map *game)
 		{
 			if (copymap[columns][rows] == 'C' || copymap[columns][rows] == 'E')
 			{
-				free_map(copymap);	
+				free_map(copymap);
 				shit(game);
 			}
 			rows++;
