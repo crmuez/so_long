@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:11:17 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/14 21:06:57 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:40:51 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	main(int argc, char **argv)
 	{
 		pos_player(game);
 		pos_exit(game);
-		game->mlx = malloc(sizeof(mlx_t));
 		game->mlx = mlx_init(PIX * (game->col -1), PIX * (game->rows),
 				"So Long", true);
 		game->images = malloc(sizeof(t_images));

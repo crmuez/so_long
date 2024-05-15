@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 18:02:08 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/14 19:55:20 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:46:51 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_ber(char *argv)
 int	check_errors(t_map *game, char *argv)
 {
 	if (check_rect(game) && check_walls(game) && check_collect(game)
-		&& check_ep(game) && check_letters(game) && floodfill(&argv[1], game)
+		&& check_ep(game) && check_letters(game) && floodfill(game)
 		&& check_ber(argv))
 	{
 		game->collects = check_collect(game);

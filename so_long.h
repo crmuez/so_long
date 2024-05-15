@@ -6,7 +6,7 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:04:50 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/14 18:14:41 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:46:21 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		check_walls(t_map *game);
 int		check_ep(t_map *game);
 int		check_collect(t_map *game);
 int		check_letters(t_map *game);
-int		floodfill(char	*argv, t_map *game);
+int		floodfill(t_map *game);
 void	pos_player(t_map *game);
 void	pos_exit(t_map *game);
 void	shit(t_map *game);
