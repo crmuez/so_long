@@ -6,14 +6,11 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:11:17 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/15 16:40:51 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/05/15 19:38:22 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-// comprobar la función de pos_player
-// comprobar la función de pos_exit
-//void	star_game(t_map *game)
 
 void	pos_player(t_map *game)
 {
@@ -92,6 +89,7 @@ int	main(int argc, char **argv)
 		print_map(game);
 		mlx_key_hook(game->mlx, &my_keyhook, game);
 		mlx_loop(game->mlx);
+		mlx_terminate(game->mlx);
 	}
 	free_map(game->map);
 	free(game->mlx);

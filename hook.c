@@ -6,13 +6,13 @@
 /*   By: crmunoz- <crmunoz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:27:56 by crmunoz-          #+#    #+#             */
-/*   Updated: 2024/05/14 17:46:55 by crmunoz-         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:26:16 by crmunoz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	key_w(t_map *game, mlx_key_data_t keydata)
+void	key_w(t_map *game)
 {
 	if (game->map[game->player_y - 1][game->player_x] != '1')
 	{
@@ -23,7 +23,7 @@ void	key_w(t_map *game, mlx_key_data_t keydata)
 	}
 }
 
-void	key_s(t_map *game, mlx_key_data_t keydata)
+void	key_s(t_map *game)
 {
 	if (game->map[game->player_y + 1][game->player_x] != '1')
 	{
@@ -34,7 +34,7 @@ void	key_s(t_map *game, mlx_key_data_t keydata)
 	}
 }
 
-void	key_a(t_map *game, mlx_key_data_t keydata)
+void	key_a(t_map *game)
 {
 	if (game->map[game->player_y][game->player_x - 1] != '1')
 	{
@@ -45,7 +45,7 @@ void	key_a(t_map *game, mlx_key_data_t keydata)
 	}
 }
 
-void	key_d(t_map *game, mlx_key_data_t keydata)
+void	key_d(t_map *game)
 {
 	if (game->map[game->player_y][game->player_x + 1] != '1')
 	{
@@ -63,16 +63,16 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	game = (t_map *) param;
 	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 		&& keydata.action == MLX_PRESS)
-		key_w(game, keydata);
+		key_w(game);
 	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 		&& keydata.action == MLX_PRESS)
-		key_s(game, keydata);
+		key_s(game);
 	if ((keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
 		&& keydata.action == MLX_PRESS)
-		key_a(game, keydata);
+		key_a(game);
 	if ((keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 		&& keydata.action == MLX_PRESS)
-		key_d(game, keydata);
+		key_d(game);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		free_map(game->map);
